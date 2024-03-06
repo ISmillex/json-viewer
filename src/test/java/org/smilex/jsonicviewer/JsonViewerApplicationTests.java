@@ -1,4 +1,4 @@
-package org.smilex.jsonviewer;
+package org.smilex.jsonicviewer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

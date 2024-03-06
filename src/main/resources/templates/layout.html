@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" th:src="@{/webjars/htmx.org/1.9.10/dist/htmx.min.js}"></script>
+    <title></title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="content">
+            <div class="wrapper">
+                navbar
+            </div>
+        </div>
+    </nav>
+
+    <section layout:fragment="content">
+        <p>Page content goes here</p>
+    </section>
+
+    <footer class="footer">
+        <div class="content">
+            <div class="wrapper">
+                footer
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

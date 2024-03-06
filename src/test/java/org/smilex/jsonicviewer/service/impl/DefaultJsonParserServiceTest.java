@@ -1,4 +1,4 @@
-package org.smilex.jsonviewer.service.impl;
+package org.smilex.jsonicviewer.service.impl;
 
 public class DefaultJsonParserServiceTest {
 }
