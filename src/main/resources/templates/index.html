@@ -2,72 +2,37 @@
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            background-color: #222;
-            overflow: hidden;
-        }
+    <title>Jsonic Viewer</title>
+    <link th:rel="stylesheet" th:href="@{/css/index.css}">
+    <link th:rel="stylesheet" th:href="@{/css/tree.css}">
+    <script th:src="@{/webjars/htmx.org/1.9.10/dist/htmx.min.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('inputField').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.closest('form').dispatchEvent(new Event('submit', {bubbles: true}));
+                }
+            });
 
-        .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .input-container {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #333;
-
-        }
-
-        .output-container {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .separator {
-            width: 2px;
-            height: 100%;
-            background-color: #444;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100%;
-            border: none;
-            color: white;
-            background: none;
-            outline: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-    </style>
+            const form = document.querySelector('form');
+            form.dispatchEvent(new Event('submit', {bubbles: true}));
+        });
+    </script>
 </head>
 <body>
-    <section layout:fragment="content">
-        <div class="container">
-            <div class="input-container">
-                <textarea id="inputField" placeholder="Enter json here"></textarea>
-            </div>
-            <div class="separator"></div>
-            <div class="output-container">
-
-            </div>
+<section layout:fragment="content">
+    <div class="container">
+        <div class="input-container">
+            <form hx-post="/json-tree" hx-trigger="submit" hx-target="#output-container">
+                <textarea id="inputField" name="json" placeholder="Enter JSON and press Enter">{"developer":"ISmillex","github":"https://github.com/ISmillex","stage":"In Development","active":true,"project_name":"Jsonic Parser","version":1.0,"license":"MIT","description":"A lightweight and fast JSON parser and viewer","repository":{"type":"git","url":"https://github.com/ISmillex/jsonic-viewer.git"},"details":{"parser":"Jsonic Parser","parser_link":"https://github.com/ISmillex/jsonic","parser_dependencies":"junit","dependencies":["springframework","thymeleaf","htmx","junit"]}}</textarea>
+            </form>
         </div>
-    </section>
+        <div class="separator"></div>
+        <div id="output-container">
+
+        </div>
+    </div>
+</section>
 </body>
 </html>

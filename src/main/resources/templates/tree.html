@@ -1,0 +1,50 @@
+<script>
+    function toggleNode(nodeWrapper) {
+        var pathElement = nodeWrapper.querySelector('.icon-path');
+        var childNodesElement = nodeWrapper.nextElementSibling;
+        childNodesElement.classList.toggle('show');
+        if (childNodesElement.classList.contains('show')) {
+            pathElement.setAttribute('d', 'M480-360 280-560h400L480-360Z');
+        } else {
+            pathElement.setAttribute('d', 'M400-280v-400l200 200-200 200Z');
+
+        }
+    }
+</script>
+
+
+<div class="tree">
+    <div th:each="node : ${tree.getChilds()}">
+        <div class="node-content" th:fragment="nodeContent(node)" >
+            <div class="node-wrapper"  onclick="toggleNode(this)">
+                <div class="name key">
+                    <div class="icon"
+                         th:if="${node.getChildrenCount() != 1}">
+                        <svg height="20" viewBox="0 -960 960 960" width="20" fill="lightblue">
+                            <path class="icon-path" d="M400-280v-400l200 200-200 200Z"/>
+                        </svg>
+                    </div>
+                    <div class="text" th:text="${node.getName()} + ':'"></div>
+                </div>
+                <div class="type" th:class="${node.getType()}"
+                     th:if="${node.getChildrenCount() != 1}"
+                     th:text="${node.getType()}"></div>
+
+                <div class="value" th:if="${node.getChildrenCount() == 1}"
+                     th:class="${node.getType() + '-value'}"
+                     th:text="${node.getValue()}"></div>
+
+                <div class="info" th:if="${node.getChildrenCount() != 1}"
+                     th:text='${node.getChildrenCount() + (node.getType().equals("object") ? " keys" : " items")}'></div>
+            </div>
+
+
+            <div class="child-nodes">
+                <div th:if="${node.getChildrenCount() != 1}"
+                     th:each="child : ${node.getChilds()}">
+                    <div th:replace="~{tree :: nodeContent(${child})}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

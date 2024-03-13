@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript" th:src="@{/webjars/htmx.org/1.9.10/dist/htmx.min.js}"></script>
+    <script th:src="@{/webjars/htmx.org/1.9.10/dist/htmx.min.js}"></script>
     <title></title>
+    <link th:rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!--    <nav class="navbar">-->
-<!--        <div class="content">-->
-<!--            <div class="wrapper">-->
-<!--                navbar-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
+    <nav class="navbar">
+        <div class="content">
+            <div class="wrapper">
+                <div class="nav-title">Jsonic Viewer</div>
+            </div>
+        </div>
+    </nav>
 
-    <section layout:fragment="content">
+    <section class="main" layout:fragment="content">
         <p>Page content goes here</p>
     </section>
 
-<!--    <footer class="footer">-->
-<!--        <div class="content">-->
-<!--            <div class="wrapper">-->
-<!--                footer-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </footer>-->
+    <footer class="footer">
+        <div class="content">
+            <div class="wrapper">
+                <a href="https://github.com/ISmillex/jsonic-viewer">github: jsonic-viewer</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
