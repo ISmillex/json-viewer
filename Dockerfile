@@ -1,17 +1,15 @@
-# Start with a base image containing Java runtime
-FROM openjdk:21-jdk-alpine
+FROM ubuntu:latest AS build
 
-# Add Maintainer Info
-LABEL maintainer="info@smilex.org"
+RUN apt-get update
+RUN apt-get install openjdk-21-jdk -y
+COPY . .
 
-# Make port 8080 available to the world outside this container
+RUN mvn clean install
+
+FROM openjdk:21-jdk-slim
+
 EXPOSE 8080
 
-# The application's jar file
-ARG JAR_FILE=target/*.jar
+COPY --from=build /target/*.jar app.jar
 
-# Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
-
-# Run the jar file
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
