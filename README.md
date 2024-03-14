@@ -12,8 +12,10 @@
 
 [![Build Status](https://app.travis-ci.com/ISmillex/jsonic-viewer.svg?token=uDzAnadwv18ksKUWLqZ3&branch=main)](https://app.travis-ci.com/ISmillex/jsonic-viewer)
 
+[Jsonic Viewer](https://jsonic-viewer.icywater-4ddd2155.uksouth.azurecontainerapps.io)
+
 ## Introduction
-The **jsonic-viewer** is a JSON parser-viewer for Java applications. It uses the Spring framework for backend operations, Jsonic for parsing, Htmx for the frontend, and Junit for testing. The tool is designed for quick and simple JSON data handling and is available for use here.
+The **jsonic-viewer** is a JSON parser-viewer. It uses the Spring framework for backend operations, Jsonic for parsing, Htmx for the frontend, and Junit for testing. The tool is designed for quick and simple JSON data handling and is available for use here.
 
 ## Features
 - **Fast JSON Parsing**: Uses Jsonic for quick JSON string interpretation.
