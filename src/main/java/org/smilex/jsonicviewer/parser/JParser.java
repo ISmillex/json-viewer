@@ -397,7 +397,7 @@ public class JParser {
         int start = this.captureStartPosition;
         int end = this.currentBufferPosition - 1;
         this.captureStartPosition = -1;
-        if (!this.capturedCharsBuffer.isEmpty()) {
+        if (this.capturedCharsBuffer.length() != 0) {
             this.capturedCharsBuffer.append(this.inputBuffer, start, end - start);
             String captured = this.capturedCharsBuffer.toString();
             this.capturedCharsBuffer.setLength(0);
