@@ -1,16 +1,17 @@
 <script>
     function toggleNode(nodeWrapper) {
-        var pathElement = nodeWrapper.querySelector('.icon-path');
-        var childNodesElement = nodeWrapper.nextElementSibling;
-        childNodesElement.classList.toggle('show');
-        if (childNodesElement.classList.contains('show')) {
-            pathElement.setAttribute('d', 'M480-360 280-560h400L480-360Z');
-        } else {
-            pathElement.setAttribute('d', 'M400-280v-400l200 200-200 200Z');
+        const pathElement = nodeWrapper.querySelector('.icon-path');
+        const childNodesElement = nodeWrapper.nextElementSibling;
 
-        }
+        childNodesElement.classList.toggle('show');
+
+        const iconPath = childNodesElement.classList.contains('show') ?
+            'M480-360 280-560h400L480-360Z' : // Path when shown
+            'M400-280v-400l200 200-200 200Z';  // Path when hidden
+        pathElement.setAttribute('d', iconPath);
     }
 </script>
+
 
 
 <div class="tree">
